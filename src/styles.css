@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f3ecdf;
+  --color-sheet: #fffaf3;
+  --color-ink: #1c1612;
+  --color-muted: #74695c;
+  --color-line: #e4d8c6;
+  --color-seal: #c4452f;
+  --color-seal-ink: #fff7f2;
+  --font-sans: "DM Sans", "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Noto Serif TC", "Songti TC", ui-serif, serif;
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-seal);
+    outline-offset: 2px;
+  }
+}
+
+@keyframes wx-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+@keyframes wx-pop {
+  from { opacity: 0.35; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.wx-shake { animation: wx-shake 220ms ease; }
+.wx-pop { animation: wx-pop 180ms ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  .wx-shake, .wx-pop { animation: none; }
+}
